@@ -262,14 +262,14 @@ git ls-files     // 查看仓库文件内容
 
 - 空行或者以#开头的行会被Git忽略。一般空行用于可读性的分隔，#一般用作注释
 - 使用标准的Blob模式匹配，例如：
-    - 星号\*通配任意个字符
-    - 问号?匹配单个字符
-    - 中括号\[]表示匹配列表中的单个字符，比如：\[abc]表示a/b/c
+	- 星号\*通配任意个字符
+	- 问号?匹配单个字符
+	- 中括号\[]表示匹配列表中的单个字符，比如：\[abc]表示a/b/c
 - 两个星号\*\*表示匹配任意的中间目录
 - 中括号可以使用短中线连接，比如：
-    - \[0-9]表示任意一位数字，\[a-z]表示任意一位小写字母
+	- \[0-9]表示任意一位数字，\[a-z]表示任意一位小写字母
 - 感叹号!表示取反
-    - 要忽略指令模式以外的文件或者目录可以加!
+	- 要忽略指令模式以外的文件或者目录可以加!
 
 例如
 
@@ -316,11 +316,11 @@ github提供的各种常用语言的忽略文件的模板，在新建仓库的�
 HTTPS模式和SSH模式：
 
 - HTTPS：
-    - 在我们把本地代码push到远程仓库的时候，需要验证用户名和密码
-    - 在2021年8月13日以后，HTTPS这种方式已被GitHub停止使用了
+	- 在我们把本地代码push到远程仓库的时候，需要验证用户名和密码
+	- 在2021年8月13日以后，HTTPS这种方式已被GitHub停止使用了
 - SSH：
-    - 这种方式在推送的时候不需要验证用户名和密码，但是需要在GitHub上添加SSH公钥的配置
-    - 这种是比较推荐的方式，更加安全和方便
+	- 这种方式在推送的时候不需要验证用户名和密码，但是需要在GitHub上添加SSH公钥的配置
+	- 这种是比较推荐的方式，更加安全和方便
   
 复制地址并克隆仓库
 
@@ -375,9 +375,9 @@ git ls-files    // 查看仓库状态
 管理本地仓库和远程仓库
 
 - git pull
-    - 把远程仓库的修改拉取到本地仓库
+	- 把远程仓库的修改拉取到本地仓库
 - git push
-    - 把本地仓库的修改推送给远程仓库
+	- 把本地仓库的修改推送给远程仓库
 
 ```shell
 git push    // 把本地仓库的修改推送给远程仓库
@@ -386,15 +386,15 @@ git push    // 把本地仓库的修改推送给远程仓库
 总结
 
 - 生成SSH Key
-    - ssh-keygen -t rsa -b 4096
-        - 私钥文件：id-rsa
-        - 公钥文件：id-rsa.pub
+	- ssh-keygen -t rsa -b 4096
+		- 私钥文件：id-rsa
+		- 公钥文件：id-rsa.pub
 - 克隆仓库
-    - git clone repo-address
+	- git clone repo-address
 - 推送更新内容
-    - git push \<remote> \<branch>
+	- git push \<remote> \<branch>
 - 拉取更新内容
-    - git pull \<remote>
+	- git pull \<remote>
 
 ## 12 关联本地仓库和远程仓库
 
@@ -437,10 +437,10 @@ git pull
     1. git remote add \<远程仓库别名> \<远程仓库地址>
     2. git push -u \<远程仓库名> \<分支名>
 - 查看远程仓库：
-    - git remote -v
+	- git remote -v
 - 拉取远程仓库内容：
-    - git pull \<远程仓库名> \<远程分支名>:\<本地分支名>
-    - \<远程分支名>:\<本地分支名>如果相同可以省<本地分支名>
+	- git pull \<远程仓库名> \<远程分支名>:\<本地分支名>
+	- \<远程分支名>:\<本地分支名>如果相同可以省<本地分支名>
 
 ## 13 Gitee的使用和GitLab本地化部署
 
@@ -460,19 +460,19 @@ git pull
 在代码管理器中四个图标的作用
 
 - 打开文件
-    - 在vscode中打开对应的文件
+	- 在vscode中打开对应的文件
 - 放弃更改
-    - 丢弃这个文件还没提交的更改内容
+	- 丢弃这个文件还没提交的更改内容
 - 添加到暂存区
-    - 就是git add命令
+	- 就是git add命令
 - 当前文件的状态
-    - ??（Untracked）：未跟踪
-    - U（Untracked）：未跟踪（这个讲解和上面的有出入？？？）
-    - M（Modified）：已修改
-    - A（Added）：已添加暂存
-    - D（Deleted）：已删除
-    - R（Renamed）：重命名
-    - U（Updated）：已更新未合并
+	- ??（Untracked）：未跟踪
+	- U（Untracked）：未跟踪（这个讲解和上面的有出入？？？）
+	- M（Modified）：已修改
+	- A（Added）：已添加暂存
+	- D（Deleted）：已删除
+	- R（Renamed）：重命名
+	- U（Updated）：已更新未合并
 
 提交修改：点击提交按钮，等价于git commit -m
 
@@ -552,19 +552,19 @@ git branch
 总结：
 
 - 查看分支列表：
-    - git branch
+	- git branch
 - 创建分支：
-    - git branch branch-name
+	- git branch branch-name
 - 切换分支
-    - git checkout branch-name
-    - git switch branch-name    （推荐）
+	- git checkout branch-name
+	- git switch branch-name    （推荐）
 - 合并分支
-    - git merge branch-name
+	- git merge branch-name
 - 删除分支
-    - 已合并
-        - git branch -d branch-name
-    - 未合并
-        - git branch -D branch-name
+	- 已合并
+		- git branch -d branch-name
+	- 未合并
+		- git branch -D branch-name
 
 ## 17 解决合并冲突
 
@@ -629,12 +629,12 @@ git commit -m "merge conflict"
 
 - 两个分支未修改同一个文件的同一处位置：Git自动合并
 - 两个分支修改了同一个文件的同一处位置：产生冲突
-    - 解决方法：
-        1. 手工修改冲突文件，合并冲突内容
-        2. 添加暂存区 git add file
-        3. 提交修改 git commit -m "message"
-    - 中止合并：当不想继续执行合并操作时可以使用下面的命令来中止合并过程
-        - git merge --abort
+	- 解决方法：
+		1. 手工修改冲突文件，合并冲突内容
+		2. 添加暂存区 git add file
+		3. 提交修改 git commit -m "message"
+	- 中止合并：当不想继续执行合并操作时可以使用下面的命令来中止合并过程
+		- git merge --abort
 
 ## 18 回退和rebase
 
@@ -722,11 +722,11 @@ git rebase dev    // 将当前的main分支变基到目标的dev分支上
 那么rebase和merge有什么区别，该如何区分使用呢？
 
 - merge
-    - 优点：不会破坏原分支的提交历史，方便回溯和查看
-    - 缺点：会产生额外的提交节点，分支图比较复杂
+	- 优点：不会破坏原分支的提交历史，方便回溯和查看
+	- 缺点：会产生额外的提交节点，分支图比较复杂
 - rebase
-    - 优点：不会新增额外的提交记录，形成线性历史，比较直观和干净
-    - 缺点：会改变提交历史，改变了当前分支branch out的节点，要避免在共享分支使用
+	- 优点：不会新增额外的提交记录，形成线性历史，比较直观和干净
+	- 缺点：会改变提交历史，改变了当前分支branch out的节点，要避免在共享分支使用
 
 一般来说，如果你只是想把两个分支合并起来，而不关心提交历史的话，那么就可以使用git merge命令，如果你确定只有你自己在一个分支上开发，并且希望提交历史更加的清晰明了，那么就建议使用rebase命令
 
@@ -754,11 +754,11 @@ GitHub Flow模型只有一个长期存在的主分支，而且主分支上的代
 还有一些比较好的习惯
 
 - 分支命名
-    - 推荐使用带有意义的描述性名称来命名分支
-        - 版本发布分支/Tag示例：v1.0.0
-        - 功能分支示例：feature-login-page
-        - 修复分支示例：hotfix-#issueid-desc
+	- 推荐使用带有意义的描述性名称来命名分支
+		- 版本发布分支/Tag示例：v1.0.0
+		- 功能分支示例：feature-login-page
+		- 修复分支示例：hotfix-#issueid-desc
 - 分支管理
-    - 定期合并已经成功验证的分支，及时删除已经合并的分支
-    - 保持合适的分支数量
-    - 为分支设置合适的管理权限
+	- 定期合并已经成功验证的分支，及时删除已经合并的分支
+	- 保持合适的分支数量
+	- 为分支设置合适的管理权限
