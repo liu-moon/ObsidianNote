@@ -22,7 +22,17 @@ docker run --name r2_foxy -it osrf/ros:foxy-desktop
 ```shell
 docker run --name r2_foxy -e DISPLAY=host.docker.internal:0.0 -it osrf/ros:foxy-desktop
 ```
+
+摄像头：
+```shell
+docker run --name r2_humble_with_cam -e DISPLAY=host.docker.internal:0.0 -it --device=\Device\000000bb osrf/ros:humble-desktop-full
+```
+
 要在windows中连接执行
+
+
+我的摄像头的地址是 /dev/video0
+
 
 
 创建dockerfile
@@ -35,3 +45,87 @@ touch Dockerfile
 
 build
 docker build -t r1_noetic_from_file .
+
+
+
+首先要source一下
+source opt/ros/foxy/setup.bash
+
+
+
+
+首先拉取镜像
+```shell
+docker pull osrf/ros:humble-desktop-full
+```
+
+
+docker run --name linux_test_con -it linux_test
+
+
+
+
+## 创建自己的dockerfile
+### windows
+mkdir docker
+touch Dockerfile
+
+FROM osrf/ros:humble-desktop-full
+
+RUN apt-get update
+RUN apt-get install -y git && apt-get install -y python3-pip
+
+RUN mkdir -p ~/dev_ws/src && cd ~/dev_ws/src
+
+RUN git clone https://gitee.com/guyuehome/ros2_21_tutorials.git
+
+RUN echo "ALL DONE !"
+
+
+
+运行dockerfile
+
+cd docker
+docker build -t humble_from_file .
+
+这样就生成了一个名为：humble_from_file的镜像
+然后通过以下命令创建容器
+docker run -it humble_from_file
+
+
+
+### ubuntu
+查看镜像
+docker images
+
+
+docker build -t humble_from_file
+
+docker run --name humble_container -it humble_from_file
+
+
+
+使用gui
+
+xhost local:root
+
+XAUTH=/tmp/.docker.xauth
+
+docker run -it \
+	--name=<name> \
+	--env="DISPLAY=$DISPLAY" \
+	--env="QT_X11_NO_MITSHM=1" \
+	--volume="tmp/.X11-unix:/tmp/.X11-unix:rw" \
+	--env="XAUTHORITY=$XAUTH" \
+	--volume="$XAUTH:$XAUTH" \
+	--net=host \
+	--privileged \
+	osrf/ros:humble-desktop-full \
+	bash
+
+echo "Done."
+
+
+chomd +x *
+./run_docker.bash
+记得修改name
