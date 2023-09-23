@@ -49,3 +49,22 @@ $$\begin{align}
 关键点的“主方向”可以表示为从圆形图像形心$O$指向质心$C$的方向向量$\overrightarrow{OC}$，于是关键点的旋转角度记为
 $$\theta = arctan2(c_y,c_x)= arctan2(m_{01},m_{10})$$
 以上就是利用灰度质心法求关键点旋转角度的原理。
+ORB-SLAM2代码使用了一些技巧加速计算灰度质心，原理和流程如下：
+![](https://cdn.jsdelivr.net/gh/liu-moon/pic@main/img/20230923102320.png)
+
+1. 要处理的是一个圆形图像区域，加速的原理是根据对称性一次索引多行像素。首先把索引基准点放在圆形的中心像素点上，记为center
+2. 图形半径记为R，先计算圆形区域内水平坐标轴上的一行像素灰度（图中红色区域），对应的坐标范围是（-R<x<R,y=0）。这一行对应的图像矩分别为
+   $$\begin{align}{} 
+  m_{10}^{center} &= \sum_{-R<x<R,y=0}xI(x,y)\\m_{01}^{center} &= \sum_{-R<x<R,y=0}yI(x,y)=0
+\end{align}$$
+3. 以水平坐标轴为对称轴，一次性索引与水平坐标轴上下对称的两行像素（图中绿色区域），上下某两个对称的像素分别记为
+   $$\begin{align}{} 
+  p_{up} &= (x',-y')\\p_{bottom} &= (x',y')
+\end{align}$$
+则这两个点对应的图像矩分别为
+$$\begin{align}{} 
+  m_{10}^{up'} &= x'I(p_{bottom})+x'I(p_{up}) = x'(I(x',y')+I(x',-y'))\\
+  m_{01}^{bottom'} &= y'I(p_{bottom})-y'I(p_{up}) = y'(I(x',y')-I(x',-y'))
+\end{align}$$
+最后累加即可。
+
