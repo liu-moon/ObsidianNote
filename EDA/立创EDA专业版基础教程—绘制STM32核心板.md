@@ -16,3 +16,7 @@
 
 
 看到P6
+
+
+
+https://docs.espressif.com/projects/esp-idf/zh_CN/latest/esp32s3/hw-reference/esp32s3/user-guide-devkitc-1.html
